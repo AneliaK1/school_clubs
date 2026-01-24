@@ -1,0 +1,138 @@
+import { useLocation } from "react-router-dom";
+import { GoClockFill } from "react-icons/go";
+import { FaCalendar } from "react-icons/fa";
+import { TiTick } from "react-icons/ti";
+import { TiTimes } from "react-icons/ti";
+import { TiTrash } from "react-icons/ti";
+import { IoTrash } from "react-icons/io5";
+import { FaTrash } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import { MdEdit } from "react-icons/md";
+import { toast } from "react-toastify";
+import { deleteDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { doc } from "firebase/firestore";
+
+export default function CardApproved({ post }) {
+  const { pathname } = useLocation();
+  const onDelete = ()=>{
+
+  }
+  const handleDelete = async()=>{
+    try{
+    await deleteDoc(doc(db, 'Posts', post.id));
+    toast.success("Post deleted succesfully", {
+        position: "top-center",
+        autoClose: 1500, // closes after 1.5 seconds
+        style: {
+          textAlign: "center", // center text
+        },
+      });
+    }catch(error){
+      toast.error(error.message, {
+        position: "bottom-center",
+        autoClose: 1500, // closes after 1.5 seconds
+        style: {
+          textAlign: "center", // center text
+        },
+      });
+    }
+  }
+
+  // 🔄 Loading skeleton
+  if (!post) {
+    return (
+      <div className="bg-white shadow-sm rounded-xl p-5 my-3 md:my-6 animate-pulse">
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
+            <div className="space-y-2">
+              <div className="h-4 w-32 bg-gray-200 rounded" />
+              <div className="h-3 w-20 bg-gray-200 rounded" />
+            </div>
+          </div>
+          <div className="h-5 w-20 bg-gray-200 rounded-lg" />
+        </div>
+
+        <div className="h-5 w-3/4 bg-gray-200 rounded mb-3" />
+        <div className="h-4 w-full bg-gray-200 rounded mb-2" />
+        <div className="h-4 w-5/6 bg-gray-200 rounded mb-4" />
+
+        <div className="flex gap-10">
+          <div className="h-4 w-24 bg-gray-200 rounded" />
+          <div className="h-4 w-20 bg-gray-200 rounded" />
+        </div>
+      </div>
+    );
+  }
+
+  
+  return (
+    <div className="relative bg-white shadow-sm rounded-xl p-5 my-3 md:my-6">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] shrink-0 rounded-full bg-blue-200 overflow-hidden" />
+          <div>
+            <div className="text-lg font-semibold break-words leading-snug">
+              {post.clubName}
+            </div>
+            <div className="text-sm text-neutral-600">Преди 2 часа</div>
+          </div>
+        </div>
+
+        {(post.state === "approved" && !pathname.startsWith("/clubs/")) && (
+          <div className="absolute top-5 right-5 z-5 flex flex-col items-center gap-3">
+            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100">
+              <TiTick className="text-green-600 text-sm" />
+            </div>
+            <div className="bg-neutral-100  py-2 px-1 p rounded-xl flex flex-col gap-3 items-center">
+              <div className="text-neutral-400 hover:text-neutral-500" onClick={handleDelete}><FaTrash size={12}/></div>
+              <div className="text-neutral-400 hover:text-neutral-500"><MdEdit size={16}/></div>
+            </div>
+            
+          </div>  
+        )}
+
+        {post.state === "rejected" && (
+          <div className="absolute top-5 right-5 z-5 flex flex-col items-center gap-3">  
+            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-100">
+              <TiTimes className="text-red-600 text-sm" />
+            </div>
+            <div className="bg-neutral-100  py-2 px-1 p rounded-xl flex flex-col gap-3 items-center">
+              <div className="text-neutral-400 hover:text-neutral-500 cursor-pointer"><FaTrash size={12}/></div>
+              <div className="text-neutral-400 hover:text-neutral-500 cursor-pointer"><MdEdit size={16}/></div>
+            </div>
+           </div> 
+        )}
+       
+         
+      </div>
+
+      {/* Title */}
+      <div className="pl-1 text-lg font-semibold w-5/6">{post.title}</div>
+
+      {/* Description */}
+      <div className="pl-1 text-md mb-4 text-neutral-600 break-words leading-relaxed">
+        {post.description}
+      </div>
+
+      <hr className="my-2" />
+
+      <div className="flex gap-16 pl-1 text-neutral-600 text-sm">
+        {post.date && (
+          <div className="flex items-center gap-2">
+            <FaCalendar />
+            <div>{post.date}</div>
+          </div>
+        )}
+        {post.time && (
+          <div className="flex items-center gap-2">
+            <GoClockFill />
+            <div>{post.time}</div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
