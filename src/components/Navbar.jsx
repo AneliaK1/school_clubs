@@ -3,7 +3,7 @@ import { MdOutlineClose } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import logo5 from './images/logo.png';
+import logo5 from '../img/logo5.png'
 
 export default function Navbar() {
   const { pathname } = useLocation();
