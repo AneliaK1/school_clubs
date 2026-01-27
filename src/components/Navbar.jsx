@@ -3,6 +3,7 @@ import { MdOutlineClose } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import logo5 from './images/logo.png';
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -47,7 +48,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b flex justify-between items-center px-6 md:px-20 p-2 md:py-3">
 
-      <img src='src\img\logo5.png' className="h-11   md:h-14 rounded-2xl"></img>
+      <img src={logo5} className="h-11 md:h-14 rounded-2xl"alt="Новинарника"/>
 
       {/* Desktop */}
       <ul className="hidden md:flex gap-8 text-md">
