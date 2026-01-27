@@ -12,13 +12,34 @@ import { toast } from "react-toastify";
 import { deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { doc } from "firebase/firestore";
+import { useState } from "react";
 
 export default function CardApproved({ post }) {
   const { pathname } = useLocation();
-  const onDelete = ()=>{
-
-  }
+  const [show, setShow] = useState(false);
+  
   const handleDelete = async()=>{
+    setShow(true);
+    /*try{
+    await deleteDoc(doc(db, 'Posts', post.id));
+    toast.success("Post deleted succesfully", {
+        position: "top-center",
+        autoClose: 1500, // closes after 1.5 seconds
+        style: {
+          textAlign: "center", // center text
+        },
+      });
+    }catch(error){
+      toast.error(error.message, {
+        position: "bottom-center",
+        autoClose: 1500, // closes after 1.5 seconds
+        style: {
+          textAlign: "center", // center text
+        },
+      });
+    }*/
+  }
+  const handleConfirm = async()=>{
     try{
     await deleteDoc(doc(db, 'Posts', post.id));
     toast.success("Post deleted succesfully", {
@@ -38,6 +59,8 @@ export default function CardApproved({ post }) {
       });
     }
   }
+  
+  
 
   // 🔄 Loading skeleton
   if (!post) {
@@ -90,6 +113,15 @@ export default function CardApproved({ post }) {
               <div className="text-neutral-400 hover:text-neutral-500" onClick={handleDelete}><FaTrash size={12}/></div>
               <div className="text-neutral-400 hover:text-neutral-500"><MdEdit size={16}/></div>
             </div>
+            {show && (
+            <DeletePopup
+              onCancel={() => setShow(false)}
+              onConfirm={() => {
+                handleConfirm();
+                setShow(false);
+              }}
+            />
+          )}
             
           </div>  
         )}
@@ -100,11 +132,22 @@ export default function CardApproved({ post }) {
               <TiTimes className="text-red-600 text-sm" />
             </div>
             <div className="bg-neutral-100  py-2 px-1 p rounded-xl flex flex-col gap-3 items-center">
-              <div className="text-neutral-400 hover:text-neutral-500 cursor-pointer"><FaTrash size={12}/></div>
+              <div className="text-neutral-400 hover:text-neutral-500 cursor-pointer"><FaTrash size={12} onClick={handleDelete}/></div>
               <div className="text-neutral-400 hover:text-neutral-500 cursor-pointer"><MdEdit size={16}/></div>
             </div>
-           </div> 
+            {show && (
+            <DeletePopup
+              onCancel={() => setShow(false)}
+              onConfirm={() => {
+                handleConfirm();
+                setShow(false);
+              }}
+            />
+          )}
+          </div> 
+           
         )}
+        
        
          
       </div>
@@ -136,3 +179,37 @@ export default function CardApproved({ post }) {
     </div>
   );
 }
+function DeletePopup({ onCancel, onConfirm }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+      <div className="bg-white w-full max-w-sm rounded-2xl p-6 shadow-xl animate-fadeIn">
+        
+        <h2 className="text-lg font-semibold text-neutral-800">
+          Delete post?
+        </h2>
+
+        <p className="text-sm text-neutral-500 mt-2">
+          Are you sure you want to delete this post?  
+          This action cannot be undone.
+        </p>
+
+        <div className="flex justify-end gap-3 mt-6">
+          <button
+            onClick={onCancel}
+            className="px-4 py-2 text-sm rounded-lg text-neutral-600 hover:bg-neutral-100 transition"
+          >
+            Cancel
+          </button>
+
+          <button
+            onClick={onConfirm}
+            className="px-4 py-2 text-sm rounded-lg bg-neutral-800 text-white hover:bg-neutral-700 transition"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+

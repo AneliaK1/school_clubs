@@ -45,9 +45,9 @@ export default function Navbar() {
   })
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b flex justify-between items-center px-6 md:px-20 py-4 md:py-5">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white border-b flex justify-between items-center px-6 md:px-20 p-2 md:py-3">
 
-      <div className="font-semibold">Новинарника</div>
+      <img src='src\img\logo5.png' className="h-11   md:h-14 rounded-2xl"></img>
 
       {/* Desktop */}
       <ul className="hidden md:flex gap-8 text-md">
@@ -70,7 +70,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-xl"
+          className="md:hidden text-xl flex items-center"
           aria-label="Open menu"
         >
           {!menuOpen ? <RxHamburgerMenu /> : <MdOutlineClose/>}
