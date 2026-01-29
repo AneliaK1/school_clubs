@@ -29,7 +29,7 @@ export default function Clubs() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-4 md:py-10">
+    <div className="min-h-screen bg-gray-50 flex justify-center py-6 md:py-10">
       <div className="w-full max-w-6xl px-4 sm:px-6">
 
         {/* Header */}

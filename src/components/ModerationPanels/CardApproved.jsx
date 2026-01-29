@@ -13,10 +13,12 @@ import { deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { doc } from "firebase/firestore";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CardApproved({ post }) {
   const { pathname } = useLocation();
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   
   const handleDelete = async()=>{
     setShow(true);
@@ -58,6 +60,9 @@ export default function CardApproved({ post }) {
         },
       });
     }
+  }
+  const handleEdit = ()=>{
+    navigate('/edit', { state: { post } });
   }
   
   
@@ -111,7 +116,7 @@ export default function CardApproved({ post }) {
             </div>
             <div className="bg-neutral-100  py-2 px-1 p rounded-xl flex flex-col gap-3 items-center">
               <div className="text-neutral-400 hover:text-neutral-500" onClick={handleDelete}><FaTrash size={12}/></div>
-              <div className="text-neutral-400 hover:text-neutral-500"><MdEdit size={16}/></div>
+              <div className="text-neutral-400 hover:text-neutral-500" onClick={handleEdit}><MdEdit size={16}/></div>
             </div>
             {show && (
             <DeletePopup
