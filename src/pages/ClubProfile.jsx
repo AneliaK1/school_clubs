@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { doc, onSnapshot, collection, query, where, orderBy } from "firebase/firestore";
+import Avatar from "../components/Avatar";
 
 import { db } from "../firebase";
 
@@ -65,11 +66,7 @@ export default function ClubProfile() {
 
         {/* Profile header */}
         <div className="bg-white rounded-xl p-6 shadow-sm flex  gap-4 flex-row md:items-center">
-          <img
-            src={profile.avatarUrl || "/default-avatar.png"}
-            alt="avatar"
-            className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
-          />
+          <Avatar name={profile.clubName} size={40} />
           <div>
             <h1 className="text-xl md:text-2xl font-bold">{profile.clubName}</h1>
             <p className="text-neutral-600 text-sm md:text-base">{profile.description}</p>

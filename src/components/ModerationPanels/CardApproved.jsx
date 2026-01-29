@@ -14,6 +14,7 @@ import { db } from "../../firebase";
 import { doc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Avatar from "../Avatar.jsx";
 
 export default function CardApproved({ post }) {
   const { pathname } = useLocation();
@@ -67,7 +68,7 @@ export default function CardApproved({ post }) {
   
   
 
-  // 🔄 Loading skeleton
+  //  Loading skeleton
   if (!post) {
     return (
       <div className="bg-white shadow-sm rounded-xl p-5 my-3 md:my-6 animate-pulse">
@@ -100,7 +101,8 @@ export default function CardApproved({ post }) {
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] shrink-0 rounded-full bg-blue-200 overflow-hidden" />
+          <Avatar name={post.clubName} size={40} />
+
           <div>
             <div className="text-lg font-semibold break-words leading-snug">
               {post.clubName}

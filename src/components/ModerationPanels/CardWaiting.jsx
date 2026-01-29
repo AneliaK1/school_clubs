@@ -11,6 +11,7 @@ import { MdEdit } from "react-icons/md";
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { deleteDoc } from "firebase/firestore";
+import Avatar from "../Avatar";
 
 export default function CardWaiting({ post }) {
   const { pathname } = useLocation();
@@ -77,9 +78,7 @@ export default function CardWaiting({ post }) {
       {/* Header: club + avatar */}
       <div className="flex flex-row gap-4 justify-between items-center mb-4 ">
         <div className="flex flex-row items-center gap-3">
-          <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] shrink-0 rounded-full bg-blue-200 overflow-hidden flex items-center justify-center">
-          {/* later you can put <img /> here */}
-        </div>
+          <Avatar name={post.clubName} size={40} />
 
           <div>
             <div className="text-lg font-semibold break-words leading-snug">{post.clubName}</div>

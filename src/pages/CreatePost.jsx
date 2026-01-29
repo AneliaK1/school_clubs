@@ -138,20 +138,7 @@ export default function CreatePost() {
           </div>
 
           {/* Image */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Снимка (по избор)
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              /*onChange={(e) => setImage(e.target.files[0])}*/
-              className="w-full text-sm"
-            />
-            <p className="text-xs text-gray-400 mt-1">
-              Поддържани формати: JPG, PNG
-            </p>
-          </div>
+          
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4">

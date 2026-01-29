@@ -1,32 +1,29 @@
-import { addDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { serverTimestamp } from "firebase/firestore";
-import {useAuth} from '../context/AuthContext'
-import { collection } from "firebase/firestore";
-import { db } from "../firebase";
+import { serverTimestamp, doc, setDoc } from "firebase/firestore";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
-import { setDoc } from "firebase/firestore";
-import { doc } from "firebase/firestore";
-import PostDetails from "./PostDetails";
+import { db } from "../firebase";
+import { useAuth } from "../context/AuthContext";
 
 export default function EditPost() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  
+
   const { user, role, clubName } = useAuth();
   const navigate = useNavigate();
   const { state } = useLocation();
 
   const post = state?.post;
 
-  if (!post) {
-    
-    navigate("/account");
-    return null;
-  }
+  // ✅ safe redirect
+  useEffect(() => {
+    if (!post) {
+      navigate("/account", { replace: true });
+    }
+  }, [post, navigate]);
+
   useEffect(() => {
     if (post) {
       setTitle(post.title || "");
@@ -35,42 +32,50 @@ export default function EditPost() {
       setTime(post.time || "");
     }
   }, [post]);
-  
+
+  if (!post) return null;
+
   const handlePost = async (e) => {
     e.preventDefault();
-    
+
     const postData = {
-      clubName,
-      clubId: user.uid,
+      clubName: post.clubName,
+      clubId: post.clubId,
       title,
       description,
       date,
       time,
-      createdAt: serverTimestamp(),
-      state: 'waiting'
-      /*image*/
-      
+      createdAt: post.createdAt, 
+      updatedAt: serverTimestamp(),
+      state: "waiting",
+      /* image */
     };
-    console.log(postData);
+
     try {
-    await setDoc(doc(db, "Posts", post.id), postData);
-    console.log("Post edited successfully!");
-    navigate('/account');
-    toast.success("Успешно редактирахте вашата публикация!", {
+      await setDoc(doc(db, "Posts", post.id), postData);
+
+      toast.success("Post edited succesfully!", {
         position: "top-center",
-        autoClose: 1500, // closes after 1.5 seconds
-        style: {
-          textAlign: "center", // center text
-        },
-    });
+        autoClose: 1500,
+        style: { textAlign: "center" },
+      });
+      if(!post.clubName){
+        navigate("/account");
+      } 
+      else{
+        navigate('/moderation');
+      }
+
+      
     } catch (error) {
-    console.error("Error editing post:", error);
-    alert("Something went wrong. Please try again."); // optional UX feedback
+      console.error("Error editing post:", error);
+      toast.error("Something went wrong. Try again!");
     }
   };
-  const handleBack = ()=>{
-    navigate('/account');
-  }
+
+  const handleBack = () => {
+    navigate("/account");
+  };
 
   return (
     <div className="min-h-[100dvh] bg-gray-50 px-4 py-10 flex justify-center">
@@ -94,7 +99,7 @@ export default function EditPost() {
             </label>
             <input
               type="text"
-              value={clubName}
+              value={post.clubName}
               disabled
               className="w-full px-4 py-2 border rounded-md bg-gray-100 text-gray-600 cursor-not-allowed"
             />
@@ -108,8 +113,7 @@ export default function EditPost() {
             <input
               type="text"
               placeholder="Напр. Състезание по логика"
-              
-              defaultValue={post.title}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-teal-400 outline-none"
               required
@@ -124,7 +128,7 @@ export default function EditPost() {
             <textarea
               rows={4}
               placeholder="Опиши събитието или новината..."
-              defaultValue={post.description}
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="w-full px-4 py-2 border rounded-md resize-none focus:ring-2 focus:ring-teal-400 outline-none"
               required
@@ -139,7 +143,7 @@ export default function EditPost() {
               </label>
               <input
                 type="date"
-                defaultValue={post.date}
+                value={date}
                 onChange={(e) => setDate(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md"
               />
@@ -151,41 +155,28 @@ export default function EditPost() {
               </label>
               <input
                 type="time"
-                defaultValue={post.time}
+                value={time}
                 onChange={(e) => setTime(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md"
               />
             </div>
           </div>
 
-          {/* Image */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Снимка (по избор)
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              /*onChange={(e) => setImage(e.target.files[0])}*/
-              className="w-full text-sm"
-            />
-            <p className="text-xs text-gray-400 mt-1">
-              Поддържани формати: JPG, PNG
-            </p>
-          </div>
+          
+          
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4">
             <button
               type="button"
               className="px-4 py-2 border rounded-md text-gray-600 hover:bg-gray-100"
-            onClick={handleBack}>
+              onClick={handleBack}
+            >
               Отказ
             </button>
             <button
               type="submit"
               className="px-5 py-2 bg-teal-500 text-white rounded-md font-medium hover:bg-teal-600"
-              
             >
               Запази редакцията
             </button>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Avatar from "./Avatar";
 
 export default function ClubCard({ club }) {
   if (!club) {
@@ -33,11 +34,7 @@ export default function ClubCard({ club }) {
 
       {/* Header */}
       <div className="flex items-center gap-4 mb-4">
-        <img
-          src={club.avatarUrl || "/default-club.png"}
-          alt={club.name}
-          className="w-14 h-14 rounded-full object-cover shrink-0"
-        />
+        <Avatar name={club.clubName} size={40} />
 
         <div className="min-w-0">
           <div className="text-base md:text-lg font-semibold truncate">

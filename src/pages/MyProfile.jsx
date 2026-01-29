@@ -8,7 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { signOut } from "firebase/auth";
-
+import Avatar from "../components/Avatar";
 import { db, auth } from "../firebase";
 import { useAuth } from "../context/AuthContext";
 
@@ -91,11 +91,7 @@ export default function MyProfile() {
         <div className="bg-white rounded-xl p-6 shadow-sm flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
           <div className="flex items-center gap-4">
-            <img
-              src={profile.avatarUrl || "/default-avatar.png"}
-              alt="avatar"
-              className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover"
-            />
+            <Avatar name={profile.clubName} size={50} />
 
             <div>
               <h1 className="text-xl md:text-2xl font-bold">

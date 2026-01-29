@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: '/edit',
         element: (
-          <RoleProtectedRoute allowedRoles={['club-owner']}>
+          <RoleProtectedRoute allowedRoles={['club-owner', 'moderator']}>
             <EditPost />
           </RoleProtectedRoute>
         )
