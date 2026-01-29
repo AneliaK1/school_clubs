@@ -41,6 +41,7 @@ export default function EditPost() {
     
     const postData = {
       clubName,
+      clubId: user.uid,
       title,
       description,
       date,
