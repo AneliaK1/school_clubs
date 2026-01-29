@@ -67,7 +67,7 @@ export default function Register() {
     "focus:outline-none focus:ring-2 focus:ring-teal-400";
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10 md:py-0">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-100 px-4 py-10 md:py-0">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 sm:p-8">
         <h1 className="text-2xl font-bold text-center mb-2">
           Регистрация
