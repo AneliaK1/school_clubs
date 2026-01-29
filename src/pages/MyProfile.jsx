@@ -44,7 +44,7 @@ export default function MyProfile() {
     const postsRef = collection(db, "Posts");
     const q = query(
       postsRef,
-      where("clubName", "==", profile.clubName),
+      where("clubId", "==", user.uid),
       orderBy("createdAt", "desc")
     );
 
@@ -84,7 +84,7 @@ export default function MyProfile() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-10">
+    <div className="min-h-screen bg-gray-50 flex justify-center py-4 md:py-10">
       <div className="w-full px-4 md:w-3/5 flex flex-col gap-6">
 
         {/* Profile header */}

@@ -17,7 +17,7 @@ import { FaCalendar } from "react-icons/fa";
 export default function PostCard({ post }) {
   if (!post) {
   return (
-    <div className="bg-white rounded-xl p-5 my-3 animate-pulse">
+    <div className="bg-white rounded-xl p-5 my-4 md:my-6 animate-pulse">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-full bg-gray-200" />
         <div className="flex-1">
@@ -33,7 +33,7 @@ export default function PostCard({ post }) {
   );
 }
   return (
-    <div className="bg-white shadow-sm rounded-xl p-5 my-6">
+    <div className="bg-white shadow-sm rounded-xl p-5 my-4 md:my-6">
       {/* Header: club + avatar */}
       <div className="flex flex-row items-center gap-3 mb-4">
         <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] shrink-0 rounded-full bg-blue-200 overflow-hidden flex items-center justify-center"></div>

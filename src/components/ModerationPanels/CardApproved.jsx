@@ -91,7 +91,7 @@ export default function CardApproved({ post }) {
 
   
   return (
-    <div className="relative bg-white shadow-sm rounded-xl p-5 my-3 md:my-6">
+    <div className="relative bg-white shadow-sm rounded-xl p-5 my-2 md:my-4">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-3">

@@ -22,6 +22,7 @@ export default function CreatePost() {
     e.preventDefault();
     const postData = {
       clubName,
+      clubId: user.uid,
       title,
       description,
       date,

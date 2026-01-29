@@ -34,7 +34,7 @@ export default function Home() {
   const approvedPosts = posts.filter((p) => p.state === "approved");
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-4 md:py-10">
+    <div className="min-h-screen bg-gray-50 flex justify-center py-6 md:py-10">
       <div className="w-full max-w-2xl px-6">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-9">

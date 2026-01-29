@@ -82,25 +82,31 @@ export default function Navbar() {
           <ul
             className="absolute top-full left-0 w-full bg-white
                       flex flex-col items-center gap-6 py-6
-                      border-t md:hidden animate-in slide-in-from-top duration-200"
+                      border-t md:hidden animate-in slide-in-from-top duration-200 border-b shadow-sm"
             
           >
             {links.map(([path, label, minRole, maxRole]) => 
             (roleNumber >= minRole && roleNumber<=maxRole) ?
-              (<li key={path} onClick={() => setMenuOpen(false)}>
+              (<li key={path} onClick={() => setMenuOpen(false)} className="group">
                 <Link
-                  to={path}
-                  className={`text-lg transition hover:text-teal-600 ${
-                    pathname === path && "text-teal-600"
-                  }`}
-                >
-                  {label}
-                </Link>
+                to={path}
+                className={`relative text-lg text-gray-800 transition-colors duration-300 hover:text-teal-600`}
+              >
+                {label}
+                {/* Smooth underline */}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-teal-600 transition-all duration-300 
+                    ${pathname === path ? "w-full" : "w-0"} 
+                    group-hover:w-full`}
+                ></span>
+              </Link>
               </li>) : null
             )}
           </ul>
         )}
+        
       </div>
+      
     </nav>
   );
 }

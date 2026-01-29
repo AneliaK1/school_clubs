@@ -34,7 +34,7 @@ export default function ClubProfile() {
     const postsRef = collection(db, "Posts");
     const q = query(
       postsRef,
-      where("clubName", "==", profile.clubName),
+      where("clubId", "==", clubId),
       where("state", "==", "approved"),
       orderBy("createdAt", "desc")
     );
@@ -82,7 +82,7 @@ export default function ClubProfile() {
         </div>
 
         {/* Approved posts */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
           {posts.length === 0 && (
             <div className="text-neutral-500 text-center">
               Няма одобрени публикации за показване.
