@@ -15,6 +15,7 @@ import { doc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "../Avatar.jsx";
+import { timeAgo } from "../../utils/timeago.js";
 
 export default function CardApproved({ post }) {
   const { pathname } = useLocation();
@@ -77,7 +78,7 @@ export default function CardApproved({ post }) {
   //  Loading skeleton
   if (!post) {
     return (
-      <div className="bg-white shadow-sm rounded-xl p-5 my-3 md:my-6 animate-pulse">
+      <div className="bg-white shadow-sm rounded-xl p-5 my-2 md:my-2 animate-pulse">
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
@@ -113,7 +114,7 @@ export default function CardApproved({ post }) {
             <div className="text-lg font-semibold break-words leading-snug w-4/5">
               {post.clubName}
             </div>
-            <div className="text-sm text-neutral-600 w-4/5">Преди 2 часа</div>
+            <div className="text-sm text-neutral-600 w-4/5">{timeAgo(post.createdAt)}</div>
           </div>
         </div>
 

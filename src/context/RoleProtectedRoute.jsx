@@ -17,7 +17,7 @@ export default function RoleProtectedRoute({ children, allowedRoles }) {
   }
 
   if (!allowedRoles.includes(role)) {
-    return <Navigate to="/home" replace />; // or redirect to a "No Access" page
+    return <Navigate to="/" replace />; // or redirect to a "No Access" page
   }
 
   return children;

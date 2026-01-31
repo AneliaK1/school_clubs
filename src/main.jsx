@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />, // App wraps all pages
     children: [
-      { path: '/home', element: <Home /> },
+      { path: '/', element: <Home /> },
       { path: '/clubs', element: <Clubs /> },
       { path: '/clubs/:clubId', element: <ClubProfile /> },
       { path: '/posts/:postId', element: <PostDetails /> },
