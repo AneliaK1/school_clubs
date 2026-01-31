@@ -36,12 +36,15 @@ export default function CreatePost() {
     await addDoc(collection(db, "Posts"), postData);
     console.log("Post created successfully!");
     navigate('/');
-    toast.success("Моля изчакайте одобрение!", {
-        position: "top-center",
-        autoClose: 1500, // closes after 1.5 seconds
-        style: {
-          textAlign: "center", // center text
-        },
+    toast.success("Please wait for approval!", {
+      position: "top-center",
+      autoClose: 2500,
+      style: {
+        textAlign: "center",
+        width: "250px",        
+        borderRadius: "12px",
+        marginTop: "1rem",  
+      },
     });
     } catch (error) {
     console.error("Error creating post:", error);

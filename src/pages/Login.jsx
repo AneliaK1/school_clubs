@@ -14,19 +14,25 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success('You signed in succcesfully',{
         position: "top-center",
-        autoClose: 1500, // closes after 1.5 seconds
+        autoClose: 2500,
         style: {
-          textAlign: "center", // center text
+          textAlign: "center",
+          width: "250px",        
+          borderRadius: "12px",
+          marginTop: "1rem",  
         },
       });
-      setTimeout(()=>{navigate("/account")}, 300);
+      setTimeout(()=>{navigate("/account")}, 3000);
       
     }catch(error){
       toast.error(error.message, {
         position: "bottom-center",
-        autoClose: 1500, // closes after 1.5 seconds
+        autoClose: 2500,
         style: {
-          textAlign: "center", // center text
+          textAlign: "center",
+          width: "250px",        
+          borderRadius: "12px",
+          marginTop: "1rem",  
         },
       });
 

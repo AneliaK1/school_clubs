@@ -45,19 +45,25 @@ export default function CardApproved({ post }) {
   const handleConfirm = async()=>{
     try{
     await deleteDoc(doc(db, 'Posts', post.id));
-    toast.success("Post deleted succesfully", {
-        position: "top-center",
-        autoClose: 1500, // closes after 1.5 seconds
-        style: {
-          textAlign: "center", // center text
-        },
-      });
+    toast.success("Post deleted successfully", {
+      position: "top-center",
+      autoClose: 2500,
+      style: {
+        textAlign: "center",
+        width: "250px",        
+        borderRadius: "12px",
+        marginTop: "1rem",  
+      },
+    });
     }catch(error){
       toast.error(error.message, {
         position: "bottom-center",
-        autoClose: 1500, // closes after 1.5 seconds
+        autoClose: 2500,
         style: {
-          textAlign: "center", // center text
+          textAlign: "center",
+          width: "250px",        
+          borderRadius: "12px",
+          marginTop: "1rem",  
         },
       });
     }
