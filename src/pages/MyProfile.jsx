@@ -85,18 +85,21 @@ export default function MyProfile() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center py-6 md:py-10">
-      <div className="w-full px-4 md:w-3/5 flex flex-col gap-6">
+      <div className="w-full px-4 md:w-3/5 flex flex-col gap-2 md:gap-6">
 
         {/* Profile header */}
-        <div className="bg-white rounded-xl p-6 shadow-sm flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="bg-white rounded-xl p-6 shadow-sm flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-3">
 
-          <div className="flex items-center gap-4">
-            <Avatar name={profile.clubName} size={50} />
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-row gap-3 md:gap-4 items-center">
+              <Avatar name={profile.clubName} size={45} />
+              <h1 className="text-xl md:text-2xl font-bold">
+                  {profile.clubName}
+              </h1>
+            </div>
 
             <div>
-              <h1 className="text-xl md:text-2xl font-bold">
-                {profile.clubName}
-              </h1>
+              
               <p className="text-neutral-600 text-sm md:text-base">
                 {profile.description}
               </p>

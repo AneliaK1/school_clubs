@@ -33,7 +33,7 @@ export default function ClubCard({ club }) {
     ">
 
       {/* Header */}
-      <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-3 md:gap-4 mb-4">
         <Avatar name={club.clubName} size={40} />
 
         <div className="min-w-0">

@@ -49,21 +49,21 @@ export default function Moderation() {
 }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex justify-center py-6 md:py-10">
-      <div className="w-full max-w-3xl px-4 sm:px-6 flex flex-col gap-4">
+    <div className="min-h-screen bg-gray-50 flex justify-center py-4 md:py-10">
+      <div className="w-full max-w-3xl px-4 sm:px-6 flex flex-col gap-3 md:gap-4">
 
         {/* Back */}
-        <Link to="/" className="flex items-center gap-1 text-sm text-neutral-500">
+        <Link to="/home" className="flex items-center gap-1 text-sm text-neutral-500">
           <IoMdArrowBack />
           Назад към началото
         </Link>
 
         {/* Header */}
-        <div className="flex items-start gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <div className="border-2 border-teal-600 rounded-full p-1 shrink-0">
             <AiOutlineExclamation className="text-teal-600 text-xl" />
           </div>
-          <div>
+          <div className="flex flex-col ">
             <h1 className="font-bold text-2xl md:text-3xl">
               Панел за модерация
             </h1>

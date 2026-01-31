@@ -35,7 +35,7 @@ export default function CreatePost() {
     try {
     await addDoc(collection(db, "Posts"), postData);
     console.log("Post created successfully!");
-    navigate('/');
+    navigate('/account');
     toast.success("Please wait for approval!", {
       position: "top-center",
       autoClose: 2500,
@@ -52,7 +52,7 @@ export default function CreatePost() {
     }
   };
   const handleBack = ()=>{
-    navigate('/');
+    navigate('/home');
   }
 
   return (

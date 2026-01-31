@@ -20,9 +20,10 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
     : 1;
 
   const links = [
-    ["/", "Начало", 1, 3],
+    ["/home", "Начало", 1, 3],
     ["/clubs", "Клубове", 1, 3],
     ["/moderation", "Модерация", 3, 3],
+    ["/create", "Създай публикация", 2, 2],
     ["/account", "Моят профил", 2, 3],
     ["/login", "Вход", 1, 1],
   ];
@@ -51,7 +52,7 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
     <nav className="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur border-b">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/home" className="flex items-center gap-2">
           <img
             src={logo8}
             alt="Новинарника"
@@ -67,13 +68,13 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
                 <Link
                   to={path}
                   className={`relative transition-colors duration-200 hover:text-teal-600 ${
-                    pathname === path ? "text-teal-600" : "text-neutral-700"
+                    pathname.includes(path) ? "text-teal-600" : "text-neutral-700"
                   }`}
                 >
                   {label}
                   <span
                     className={`absolute left-0 -bottom-1 h-[2px] bg-teal-600 transition-all duration-300 ${
-                      pathname === path ? "w-full" : "w-0 hover:w-full"
+                      pathname.includes(path) ? "w-full" : "w-0 hover:w-full"
                     }`}
                   />
                 </Link>
@@ -101,7 +102,7 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
                     <Link
                       to={path}
                       className={`block px-5 py-2 rounded-lg transition ${
-                        pathname === path
+                        pathname.includes(path)
                           ? "bg-teal-50 text-teal-600 font-semibold"
                           : "text-neutral-700 hover:bg-neutral-100"
                       }`}

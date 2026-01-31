@@ -68,7 +68,7 @@ export default function EditPost() {
         navigate("/account");
       } 
       else{
-        navigate('/moderation');
+        navigate('/account');
       }
 
       
