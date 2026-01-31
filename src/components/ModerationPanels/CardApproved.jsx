@@ -45,23 +45,23 @@ export default function CardApproved({ post }) {
   const handleConfirm = async()=>{
     try{
     await deleteDoc(doc(db, 'Posts', post.id));
-    toast.success("Post deleted successfully", {
+    toast.success("Post deleted successfully.", {
       position: "top-center",
-      autoClose: 2500,
+      autoClose: 2000,
       style: {
         textAlign: "center",
-        width: "250px",        
+        width: "280px",        
         borderRadius: "12px",
         marginTop: "1rem",  
       },
     });
     }catch(error){
-      toast.error(error.message, {
+      toast.error("Couldn't delete post", {
         position: "bottom-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "280px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },
@@ -110,10 +110,10 @@ export default function CardApproved({ post }) {
           <Avatar name={post.clubName} size={40} />
 
           <div>
-            <div className="text-lg font-semibold break-words leading-snug">
+            <div className="text-lg font-semibold break-words leading-snug w-4/5">
               {post.clubName}
             </div>
-            <div className="text-sm text-neutral-600">Преди 2 часа</div>
+            <div className="text-sm text-neutral-600 w-4/5">Преди 2 часа</div>
           </div>
         </div>
 

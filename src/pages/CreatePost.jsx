@@ -38,18 +38,27 @@ export default function CreatePost() {
     navigate('/account');
     toast.success("Please wait for approval!", {
       position: "top-center",
-      autoClose: 2500,
+      autoClose: 2000,
       style: {
         textAlign: "center",
-        width: "250px",        
+        width: "280px",        
         borderRadius: "12px",
         marginTop: "1rem",  
       },
     });
-    } catch (error) {
-    console.error("Error creating post:", error);
-    alert("Something went wrong. Please try again."); // optional UX feedback
+    } catch(error){
+      toast.error("Error editing post", {
+        position: "bottom-center",
+        autoClose: 2000,
+        style: {
+          textAlign: "center",
+          width: "280px",        
+          borderRadius: "12px",
+          marginTop: "1rem",  
+        },
+      });
     }
+  
   };
   const handleBack = ()=>{
     navigate('/home');

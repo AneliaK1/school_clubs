@@ -42,25 +42,25 @@ export default function Register() {
       });
       toast.success('You registered succcesfully',{
         position: "top-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "280px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },
       });
-      setTimeout(()=>{navigate("/account")}, 3000);
+      setTimeout(()=>{navigate("/account")}, 2200);
       console.log("User registered successfully");
 
     } catch (error) {
       console.error(error.message);
-      toast.error(error.message, {
+      toast.error('Problem occured creating you account Try Again!', {
         position: "bottom-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "280px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },

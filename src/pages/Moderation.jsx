@@ -61,7 +61,7 @@ export default function Moderation() {
         {/* Header */}
         <div className="flex items-center gap-2 md:gap-3">
           <div className="border-2 border-teal-600 rounded-full p-1 shrink-0">
-            <AiOutlineExclamation className="text-teal-600 text-xl" />
+            <AiOutlineExclamation className="text-teal-600 text-md md:text-xl" />
           </div>
           <div className="flex flex-col ">
             <h1 className="font-bold text-2xl md:text-3xl">
@@ -74,7 +74,7 @@ export default function Moderation() {
         </div>
 
         {/* Counters */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4 my-1 ">
           <ModerationCard number={waitingPosts.length} color="text-amber-600" text="Чакащи" />
           <ModerationCard number={approvedPosts.length} color="text-green-600" text="Одобрени" />
           <ModerationCard number={rejectedPosts.length} color="text-red-600" text="Отхвърлени" />
@@ -105,39 +105,92 @@ export default function Moderation() {
         </div>
 
         {/* Mobile select */}
-        <div className="md:hidden">
+        <div className="md:hidden relative">
           <select
-            className="w-full px-3 py-2 border rounded-md"
             value={panel}
             onChange={(e) => setPanel(e.target.value)}
+            className="
+              w-full appearance-none
+              bg-white
+              px-4 py-3
+              pr-10
+              border border-neutral-300
+              rounded-xl
+              text-sm font-medium
+              shadow-sm
+              focus:outline-none
+              focus:ring-2 focus:ring-teal-500
+              focus:border-teal-500
+            "
           >
-            <option value="waiting">Чакащи</option>
-            <option value="approved">Одобрени</option>
-            <option value="rejected">Отхвърлени</option>
-            <option value="all">Всички</option>
+            <option value="waiting">Чакащи ({waitingPosts.length})</option>
+            <option value="approved">Одобрени ({approvedPosts.length})</option>
+            <option value="rejected">Отхвърлени ({rejectedPosts.length})</option>
+            <option value="all">Всички ({posts.length})</option>
           </select>
+
+          {/* Chevron */}
+          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-neutral-400">
+            ▼
+          </div>
         </div>
+
 
         {/* Panels */}
         <div className="flex flex-col md:gap-4">
+          {/* Waiting */}
           {panel === "waiting" &&
-            waitingPosts.map((post) => <CardWaiting key={post.id} post={post} />)}
-
-          {panel === "approved" &&
-            approvedPosts.map((post) => <CardApproved key={post.id} post={post} />)}
-
-          {panel === "rejected" &&
-            rejectedPosts.map((post) => <CardApproved key={post.id} post={post} />)}
-
-          {panel === "all" &&
-            posts.map((post) =>
-              post.state === "waiting" ? (
+            (waitingPosts.length > 0 ? (
+              waitingPosts.map((post) => (
                 <CardWaiting key={post.id} post={post} />
-              ) : (
+              ))
+            ) : (
+              <p className="text-center text-neutral-500 py-6">
+                Няма чакащи публикации
+              </p>
+            ))}
+
+          {/* Approved */}
+          {panel === "approved" &&
+            (approvedPosts.length > 0 ? (
+              approvedPosts.map((post) => (
                 <CardApproved key={post.id} post={post} />
+              ))
+            ) : (
+              <p className="text-center text-neutral-500 py-6">
+                Няма одобрени публикации
+              </p>
+            ))}
+
+          {/* Rejected */}
+          {panel === "rejected" &&
+            (rejectedPosts.length > 0 ? (
+              rejectedPosts.map((post) => (
+                <CardApproved key={post.id} post={post} />
+              ))
+            ) : (
+              <p className="text-center text-neutral-500 py-6">
+                Няма отхвърлени публикации
+              </p>
+            ))}
+
+          {/* All */}
+          {panel === "all" &&
+            (posts.length > 0 ? (
+              posts.map((post) =>
+                post.state === "waiting" ? (
+                  <CardWaiting key={post.id} post={post} />
+                ) : (
+                  <CardApproved key={post.id} post={post} />
+                )
               )
-            )}
+            ) : (
+              <p className="text-center text-neutral-500 py-6">
+                Няма публикации
+              </p>
+            ))}
         </div>
+
       </div>
     </div>
   );

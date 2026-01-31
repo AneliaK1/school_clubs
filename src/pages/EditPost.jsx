@@ -56,10 +56,10 @@ export default function EditPost() {
 
         toast.success("Post edited succesfully!", {
         position: "top-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "280px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },
@@ -73,13 +73,13 @@ export default function EditPost() {
 
       
     } catch (error) {
-      console.error("Error editing post:", error);
-      toast.error(error.message, {
+      console.error("Error editing post:");
+      toast.error("Error editing post", {
         position: "bottom-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "280px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },

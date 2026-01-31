@@ -58,21 +58,21 @@ export default function CardWaiting({ post }) {
     await deleteDoc(doc(db, 'Posts', post.id));
     toast.success("Post deleted successfully", {
       position: "top-center",
-      autoClose: 2500,
+      autoClose: 2000,
       style: {
         textAlign: "center",
-        width: "250px",        
+        width: "280px",        
         borderRadius: "12px",
         marginTop: "1rem",  
       },
     });
     }catch(error){
-      toast.error(error.message, {
+      toast.error("Couldn't delete post", {
         position: "bottom-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "280px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },
@@ -116,8 +116,8 @@ export default function CardWaiting({ post }) {
           <Avatar name={post.clubName} size={40} />
 
           <div>
-            <div className="text-lg font-semibold break-words leading-snug">{post.clubName}</div>
-            <div className="text-sm text-neutral-600">Преди 2 часа</div>
+            <div className="text-lg font-semibold break-words leading-snug w-4/5">{post.clubName}</div>
+            <div className="text-sm text-neutral-600 w-4/5">Преди 2 часа</div>
           </div>
         </div>
         <div className="absolute top-5 right-5 z-5 flex flex-col items-center gap-3">
@@ -135,7 +135,7 @@ export default function CardWaiting({ post }) {
       
 
       {/* Post title */}
-      <div className="pl-1 text-lg font-semibold w-5/6">{post.title}</div>
+      <div className="pl-1 text-lg font-semibold w-4/5">{post.title}</div>
 
       {/* Post description */}
       <div className="pl-1 text-md mb-4 text-neutral-600 break-words whitespace-normal leading-relaxed">

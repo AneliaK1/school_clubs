@@ -12,9 +12,9 @@ export default function Login() {
     e.preventDefault();
     try{
       await signInWithEmailAndPassword(auth, email, password);
-      toast.success('You signed in succcesfully',{
+      toast.success('You signed in successfully',{
         position: "top-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
           width: "250px",        
@@ -22,15 +22,15 @@ export default function Login() {
           marginTop: "1rem",  
         },
       });
-      setTimeout(()=>{navigate("/account")}, 3000);
+      setTimeout(()=>{navigate("/account")}, 2200);
       
     }catch(error){
-      toast.error(error.message, {
+      toast.error("Wrong email or password!", {
         position: "bottom-center",
-        autoClose: 2500,
+        autoClose: 2000,
         style: {
           textAlign: "center",
-          width: "250px",        
+          width: "200px",        
           borderRadius: "12px",
           marginTop: "1rem",  
         },

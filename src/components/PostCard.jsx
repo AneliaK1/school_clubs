@@ -1,20 +1,8 @@
-/*
-      { 
-        id: 4,
-        clubName: "Изкуство клуб",
-        logo: "art_club_logo.png",
-        title: "Картина на седмицата",
-        description: "Покажете своята креативност и участвате в нашата изложба.",
-        date: "26 януари събота",
-        time: null,
-        state: "rejected",
-        postedAt: new Date("2026-01-03T14:15:00Z")
-      }
-*/
 /* responsive*/
 import Avatar from "./Avatar";
 import { GoClockFill } from "react-icons/go";
 import { FaCalendar } from "react-icons/fa";
+import { timeAgo } from "../utils/timeago";
 export default function PostCard({ post }) {
   if (!post) {
   return (
@@ -40,7 +28,7 @@ export default function PostCard({ post }) {
         <Avatar name={post.clubName} size={40} />
         <div>
           <div className="text-md md:text-lg font-semibold">{post.clubName}</div>
-          <div className="text-xs md:text-sm text-neutral-600">Преди 2 часа</div>
+          <div className="text-xs md:text-sm text-neutral-600">{timeAgo(post.createdAt)}</div>
         </div>
       </div>
 
