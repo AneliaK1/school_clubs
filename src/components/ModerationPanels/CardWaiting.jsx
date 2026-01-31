@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { deleteDoc } from "firebase/firestore";
 import Avatar from "../Avatar";
 import { useState } from "react";
+import { timeAgo } from "../../utils/timeago";
 
 export default function CardWaiting({ post }) {
   const { pathname } = useLocation();
@@ -117,7 +118,7 @@ export default function CardWaiting({ post }) {
 
           <div>
             <div className="text-lg font-semibold break-words leading-snug w-4/5">{post.clubName}</div>
-            <div className="text-sm text-neutral-600 w-4/5">Преди 2 часа</div>
+            <div className="text-sm text-neutral-600 w-4/5">{timeAgo(post.createdAt)}</div>
           </div>
         </div>
         <div className="absolute top-5 right-5 z-5 flex flex-col items-center gap-3">

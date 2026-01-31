@@ -77,10 +77,10 @@ export default function Login() {
           </div>
 
           <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2">
+            {/*<label className="flex items-center gap-2">
               <input type="checkbox" className="accent-teal-500" />
               Запомни ме
-            </label>
+            </label>*/}
             <a href="#" className="text-teal-500 hover:underline">
               Забравена парола?
             </a>

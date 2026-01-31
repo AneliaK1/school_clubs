@@ -14,7 +14,7 @@ export default function ClubProfile() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 👤 Profile listener
+
   useEffect(() => {
     if (!clubId) return;
 

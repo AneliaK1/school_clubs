@@ -113,7 +113,7 @@ export default function CardApproved({ post }) {
             <div className="text-lg font-semibold break-words leading-snug w-4/5">
               {post.clubName}
             </div>
-            <div className="text-sm text-neutral-600 w-4/5">Преди 2 часа</div>
+            <div className="text-sm text-neutral-600 w-4/5">{timeAgo(post.createdAt)}</div>
           </div>
         </div>
 

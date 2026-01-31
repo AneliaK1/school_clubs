@@ -16,12 +16,13 @@ import MyProfile from './pages/MyProfile.jsx';
 import RoleProtectedRoute from './context/RoleProtectedRoute.jsx';
 import { AuthProvider } from './context/AuthContext.jsx'
 
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />, // App wraps all pages
     children: [
-      { path: '/home', element: <Home /> },
+      { path: '/', element: <Home /> },
       { path: '/clubs', element: <Clubs /> },
       { path: '/clubs/:clubId', element: <ClubProfile /> },
       { path: '/posts/:postId', element: <PostDetails /> },

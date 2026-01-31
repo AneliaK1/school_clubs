@@ -17,7 +17,6 @@ export default function EditPost() {
 
   const post = state?.post;
 
-  // ✅ safe redirect
   useEffect(() => {
     if (!post) {
       navigate("/account", { replace: true });

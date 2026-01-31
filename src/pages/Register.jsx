@@ -175,12 +175,13 @@ export default function Register() {
             onChange={(e) => setTheme(e.target.value)}
           >
             <option value="">Изберете тема</option>
+            <option value="Математика">Математика</option>
             <option value="Изкуство">Изкуство</option>
             <option value="Спорт">Спорт</option>
             <option value="Наука">Наука</option>
             <option value="Музика">Музика</option>
-            <option value="Математика">Математика</option>
-            <option value="друго">Друго</option>
+            
+            <option value="Друго">Друго</option>
           </select>
 
           {/* Description */}

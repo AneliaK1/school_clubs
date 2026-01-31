@@ -22,7 +22,7 @@ export default function PostCard({ post }) {
   );
 }
   return (
-    <div className="bg-white shadow-sm rounded-xl p-5 my-4 md:my-6">
+    <div className="bg-white shadow-sm rounded-xl p-5 my-4ca md:my-6">
       {/* Header: club + avatar */}
       <div className="flex flex-row items-center gap-3 mb-4">
         <Avatar name={post.clubName} size={40} />

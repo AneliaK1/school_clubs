@@ -53,7 +53,7 @@ export default function Moderation() {
       <div className="w-full max-w-3xl px-4 sm:px-6 flex flex-col gap-3 md:gap-4">
 
         {/* Back */}
-        <Link to="/home" className="flex items-center gap-1 text-sm text-neutral-500">
+        <Link to="/" className="flex items-center gap-1 text-sm text-neutral-500">
           <IoMdArrowBack />
           Назад към началото
         </Link>
