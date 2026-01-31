@@ -74,7 +74,7 @@ export default function Moderation() {
         </div>
 
         {/* Counters */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-3 gap-4">
           <ModerationCard number={waitingPosts.length} color="text-amber-600" text="Чакащи" />
           <ModerationCard number={approvedPosts.length} color="text-green-600" text="Одобрени" />
           <ModerationCard number={rejectedPosts.length} color="text-red-600" text="Отхвърлени" />
@@ -107,7 +107,7 @@ export default function Moderation() {
         {/* Mobile select */}
         <div className="md:hidden">
           <select
-            className="w-full px-4 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md"
             value={panel}
             onChange={(e) => setPanel(e.target.value)}
           >

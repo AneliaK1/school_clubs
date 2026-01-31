@@ -72,9 +72,9 @@ export default function Home() {
 
           {!loading &&
             approvedPosts.map((post) => (
-              <Link key={post.id} to={`/posts/${post.id}`} className="block w-full">
-                <PostCard post={post} />
-              </Link>
+              /*<Link key={post.id} to={`/posts/${post.id}`} className="block w-full">*/
+                <PostCard key={post.id} post={post} />
+              /*</Link>*/
             ))}
         </div>
 

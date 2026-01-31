@@ -12,6 +12,7 @@
       }
 */
 /* responsive*/
+import Avatar from "./Avatar";
 import { GoClockFill } from "react-icons/go";
 import { FaCalendar } from "react-icons/fa";
 export default function PostCard({ post }) {
@@ -36,7 +37,7 @@ export default function PostCard({ post }) {
     <div className="bg-white shadow-sm rounded-xl p-5 my-4 md:my-6">
       {/* Header: club + avatar */}
       <div className="flex flex-row items-center gap-3 mb-4">
-        <div className="w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] shrink-0 rounded-full bg-blue-200 overflow-hidden flex items-center justify-center"></div>
+        <Avatar name={post.clubName} size={40} />
         <div>
           <div className="text-md md:text-lg font-semibold">{post.clubName}</div>
           <div className="text-xs md:text-sm text-neutral-600">Преди 2 часа</div>
