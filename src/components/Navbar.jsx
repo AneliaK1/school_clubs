@@ -9,11 +9,8 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
   const { pathname } = useLocation();
   const { user, role } = useAuth();
   const menuRef = useRef(null);
-  const isActive = (path) => {
-  if (path === "/") return pathname === "/"; // exact match for home
-  return pathname.startsWith(path); // for other routes
-  };
-
+  const isActive = (path) =>
+  path === "/" ? pathname === "/" : pathname.startsWith(path);
   // Role mapping
   const roleNumber = !user
     ? 1
@@ -72,15 +69,13 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
                 <Link
                   to={path}
                   className={`relative transition-colors duration-200 hover:text-teal-600 ${
-                    isActive(path)
-                   ? "text-teal-600" : "text-neutral-700"
+                    isActive(path)  ? "text-teal-600" : "text-neutral-700"
                   }`}
                 >
                   {label}
                   <span
                     className={`absolute left-0 -bottom-1 h-[2px] bg-teal-600 transition-all duration-300 ${
-                      isActive(path)
-                      ? "w-full" : "w-0 hover:w-full"
+                      isActive(path) ? "w-full" : "w-0 hover:w-full"
                     }`}
                   />
                 </Link>
@@ -108,8 +103,7 @@ export default function Navbar({ menuOpened, handleMenuChanged }) {
                     <Link
                       to={path}
                       className={`block px-5 py-2 rounded-lg transition ${
-                        isActive(path)
-                          ? "bg-teal-50 text-teal-600 font-semibold"
+                        isActive(path) ? "bg-teal-50 text-teal-600 font-semibold"
                           : "text-neutral-700 hover:bg-neutral-100"
                       }`}
                     >

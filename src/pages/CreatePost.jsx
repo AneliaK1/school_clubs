@@ -61,7 +61,7 @@ export default function CreatePost() {
   
   };
   const handleBack = ()=>{
-    navigate('/home');
+    navigate('/');
   }
 
   return (

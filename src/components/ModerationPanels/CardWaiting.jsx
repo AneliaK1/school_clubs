@@ -110,7 +110,7 @@ export default function CardWaiting({ post }) {
   
  
   return (
-    <div className="relative bg-white shadow-sm rounded-xl p-5 my-3 md:my-6">
+    <div className="relative bg-white shadow-sm rounded-xl p-5 my-2 md:my-2">
       {/* Header: club + avatar */}
       <div className="flex flex-row gap-4 justify-between items-center mb-4 ">
         <div className="flex flex-row items-center gap-3">
